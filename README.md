@@ -1,6 +1,10 @@
 custom-actions
 ==============
 
+This repo will include only Windows Installer custom actions. 
+
+==============
+
 ### RemoveReadOnlyAttribute ###
 
 
