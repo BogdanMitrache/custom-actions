@@ -24,3 +24,5 @@ The DLL "ActionTextandProgressUpdates.CA.dll" is a standard MSI custom actions D
 installer package, be it built with Advanced Installer, Wix, etc...
 
 
+Detailed explanations about how to schedule the custom actions and a C++ option to update the action text and progressbar can be found on the following link:
+http://msdn.microsoft.com/en-us/library/aa367525(VS.85).aspx
