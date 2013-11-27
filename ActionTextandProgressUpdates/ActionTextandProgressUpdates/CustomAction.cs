@@ -20,11 +20,15 @@ namespace ActionTextandProgressUpdates
         {
             session.Log("Begin SampleCustomAction");
 
-            //set the actiontext
+            //set the action text
             string userMessage = "Executing custom action SampleCustomAction.";
             StatusMessage(session, userMessage);
+            
+            // we split the progress bar in 4 big chunks, have a quarter of it assigned to our custom action
+            ResetProgressBar(session, 4);
+            IncrementProgressBar(session, 1);
 
-            // halting executing just so you can see the actiontext on ProgressDlg
+            // halting executing just so you can see the action text and progress bar on ProgressDlg
             System.Threading.Thread.Sleep(5000);
 
             session.Log("End SampleCustomAction");
@@ -61,11 +65,11 @@ namespace ActionTextandProgressUpdates
             return session.Message(InstallMessage.Progress, record);
         }
 
-        public static MessageResult IncrementProgressBar(Session session)
+        public static MessageResult IncrementProgressBar(Session session, int progressPercentage)
         {
             var record = new Record(3);
             record[1] = 2; // "ProgressReport" message 
-            record[2] = 1; // ticks to increment 
+            record[2] = progressPercentage; // ticks to increment 
             record[3] = 0; // ignore 
             return session.Message(InstallMessage.Progress, record);
         }
