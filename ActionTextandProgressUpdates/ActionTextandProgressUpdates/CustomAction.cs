@@ -32,7 +32,10 @@ namespace ActionTextandProgressUpdates
             return ActionResult.Success;
         }
 
-        // helper method used to send the actiontext message to the MSI
+        /*
+         * helper method used to send the actiontext message to the MSI
+         * kudos to a fellow developer http://community.flexerasoftware.com/archive/index.php?t-181773.html
+         */
         internal static void StatusMessage(Session session, string status)
         {
             Record record = new Record(3);
@@ -42,6 +45,29 @@ namespace ActionTextandProgressUpdates
 
             session.Message(InstallMessage.ActionStart, record);
             Application.DoEvents();
+        }
+
+        /*
+         * helper methods to control the progress bar
+         * kudos to a fellow developer http://windows-installer-xml-wix-toolset.687559.n2.nabble.com/Update-progress-bar-from-deferred-custom-action-tt4994990.html#a4997563
+         */
+
+        public static MessageResult ResetProgressBar(Session session, int totalStatements)
+        {
+            var record = new Record(3);
+            record[1] = 0; // "Reset" message 
+            record[2] = totalStatements;  // total ticks 
+            record[3] = 0; // forward motion 
+            return session.Message(InstallMessage.Progress, record);
+        }
+
+        public static MessageResult IncrementProgressBar(Session session)
+        {
+            var record = new Record(3);
+            record[1] = 2; // "ProgressReport" message 
+            record[2] = 1; // ticks to increment 
+            record[3] = 0; // ignore 
+            return session.Message(InstallMessage.Progress, record);
         }
     }
 }
