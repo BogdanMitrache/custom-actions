@@ -15,4 +15,12 @@ To build the project you also need Wix Toolset 3.5 or higher installed, follow t
 http://www.advancedinstaller.com/user-guide/qa-c-sharp-ca.html
 
 
-### ... ###
+### ActionTextandProgressUpdates ###
+
+This is a sample custom action that shows how to update the action text and progressbar.
+It contains a sample.aip file, the calls the custom action, which you can build even with a trial version of Advanced Installer.
+
+The DLL "ActionTextandProgressUpdates.CA.dll" is a standard MSI custom actions DLL, so you can use it in any
+installer package, be it built with Advanced Installer, Wix, etc...
+
+
